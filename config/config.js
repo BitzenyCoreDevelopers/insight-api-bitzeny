@@ -19,20 +19,20 @@ function getUserHome() {
   return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 }
 
-var home = process.env.INSIGHT_DB || (getUserHome() + '/.insight');
+var home = process.env.INSIGHT_DB || (getUserHome() + '/.insight-bitzeny');
 
 if (process.env.INSIGHT_NETWORK === 'livenet') {
   env = 'livenet';
   db = home;
   port = '3000';
-  b_port = '8332';
-  p2p_port = '8333';
+  b_port = '9252';
+  p2p_port = '9253';
 } else {
   env = 'testnet';
   db = home + '/testnet';
   port = '3001';
-  b_port = '18332';
-  p2p_port = '18333';
+  b_port = '19252';
+  p2p_port = '19253';
 }
 port = parseInt(process.env.INSIGHT_PORT) || port;
 
@@ -57,9 +57,9 @@ var isWin = /^win/.test(process.platform);
 var isMac = /^darwin/.test(process.platform);
 var isLinux = /^linux/.test(process.platform);
 if (!dataDir) {
-  if (isWin) dataDir = '%APPDATA%\\Bitcoin\\';
-  if (isMac) dataDir = process.env.HOME + '/Library/Application Support/Bitcoin/';
-  if (isLinux) dataDir = process.env.HOME + '/.bitcoin/';
+  if (isWin) dataDir = '%APPDATA%\\BitZeny\\';
+  if (isMac) dataDir = process.env.HOME + '/Library/Application Support/BitZeny/';
+  if (isLinux) dataDir = process.env.HOME + '/.bitzeny/';
 }
 dataDir += network === 'testnet' ? 'testnet3' : '';
 
