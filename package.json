@@ -44,7 +44,7 @@
     "start": "node insight.js"
   },
   "dependencies": {
-    "async": "*",
+    "async": "^2.6.2",
     "base58-native": "0.1.2",
     "bignum": "*",
     "morgan": "*",
