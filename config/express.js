@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var express = require('express');
+var methodOverride = require('method-override');
 var config = require('./config');
 var path = require('path');
 var logger = require('../lib/logger').logger;
@@ -32,7 +33,7 @@ module.exports = function(app, historicSync, peerSync) {
   
   app.use(express.json());
   app.use(express.urlencoded());
-  app.use(express.methodOverride());
+  app.use(methodOverride());
   app.use(express.compress());
 
   if (config.enableEmailstore) {
