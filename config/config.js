@@ -119,4 +119,5 @@ module.exports = {
   safeConfirmations: safeConfirmations, // PLEASE NOTE THAT *FULL RESYNC* IS NEEDED TO CHANGE safeConfirmations
   ignoreCache: ignoreCache,
   forceRPCsync: forceRPCsync,
+  txconverter: process.env.TXCONVERTER_URL || false,
 };
