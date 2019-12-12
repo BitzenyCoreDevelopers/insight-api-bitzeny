@@ -202,10 +202,22 @@ Address.prototype.update = function(next, opts) {
           });
         } else {
           txOut.forEach(function(txItem) {
-            self._addTxItem(txItem, txList, opts.includeTxInfo);
+            self._addTxItem(txItem, txList, true);
           });
-          if (txList)
-            self.transactions = txList;
+          if (txList) {
+            txList.sort(function(a, b) {
+              return (b.ts - a.ts);
+            });
+            if(opts.includeTxInfo) {
+              self.transactions = txList;
+            } else {
+              var txidList = [];
+              for(var i in txList) {
+                txidList.push(txList[i].txid);
+              }
+              self.transactions = txidList;
+            }
+          }
           return next();
         }
       });
